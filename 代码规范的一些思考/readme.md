@@ -22,5 +22,13 @@ https://blog.csdn.net/ownfire/article/details/74897823
 
 # 可以参考的书
 
-1，强烈推荐《clean code》一书。我已经把这本书的PDF版本也一起放在了github上。
+1，强烈推荐《clean code》一书。我已经把这本书的PDF版本也一起放在了github上。这本书的第一章到第九章应该仔细研读，后面几章可以选择浏览。
+
+2，《clean code》这本书在国内有很多粉丝，因而有不少读后感，大家也可以参考， 例如 https://book.douban.com/review/5613396/， 以及 https://www.cnblogs.com/lyy-2016/p/6118040.html
+
+3，书中的观点未必完全正确，有少量内容存有争议，但是有思考才会进步。
+
+
+
+# 代码例子
 
