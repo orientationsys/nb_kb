@@ -1,12 +1,17 @@
 ##网页动画
 
-### 一、为什么要用动画(动画的重要性)
+### 一、为什么要用动画
 #### 1、通过网站的对比
 [中兴天机](http://www.ztedevices.com/cn/product/smart-phone/axon_m)
 [魅族15系列](https://www.meizu.com/15/summary/?click=gw_index_lunbo_1)
 [Mac Pro](https://www.apple.com/mac-pro/)
-#### 2、从设计的角度出发
-### 二、动画的实现方式(现有动画实现方式的发展)
+#### 2、动画的应用场景
+#####界面元素动画
+#####等待动画
+#####讲故事的动画
+#####纯装饰动画
+#####广告中的动画
+### 二、动画的实现方式
 #### 1、资源类（flash动画，gif动图）
 #### 2、代码类（canvas）
 #### 3、dom操作类（jquery、css3-animation、svg）
@@ -25,16 +30,20 @@
 #### 5、jquery操作dom，动画复杂度越高，性能越慢
 #### 6、css-animation3
 ### 五、更多阅读
-
-[深入浏览器理解CSS animations 和 transitions的性能问题](https://blog.csdn.net/leer168/article/details/25917093)
-
-[Differences Between SVG and Canvas](https://www.w3schools.com/html/html5_svg.asp)
-
-[The Benefits of Using CSS Animations](http://www.adobepress.com/articles/article.asp?p=2266739)
-
+#####关于flash
 [Thoughts on Flash](https://www.apple.com/hotnews/thoughts-on-flash/)
 
 [Saying goodbye to Flash in Chrome](https://www.blog.google/products/chrome/saying-goodbye-flash-chrome/)
+#####关于svg&canvas
+[Differences Between SVG and Canvas](https://www.w3schools.com/html/html5_svg.asp)
+
+[svg and canvas](https://www.zhihu.com/question/19690014)
+#####关于css
+[The Benefits of Using CSS Animations](http://www.adobepress.com/articles/article.asp?p=2266739)
+
+[深入浏览器理解CSS animations 和 transitions的性能问题](https://blog.csdn.net/leer168/article/details/25917093)
+
+#####关于网页动画
 
 [网页动画的十二原则](https://cssanimation.rocks/cn/principles/)
 
