@@ -74,6 +74,9 @@ https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code
 2. 微信用户已授权给第三方应用帐号相应接口作用域（scope）
 
 
+代码实现
+
+配置 
 return array(
 
 	//'配置项'=>'配置值'
@@ -84,7 +87,7 @@ return array(
 );
 
 
-//获取code跳转
+第一步：请求CODE
 
 function get_code($state)
 {
@@ -101,9 +104,9 @@ function get_code($state)
     header('Location: '.$url);
 }
 
+第二步：通过code获取access_token
 //获取网页授权access_token，此access_token非普通的access_token，
 //详情请看微信公众号开发者文档
-
 
 function get_access_token(){
 
@@ -125,6 +128,7 @@ function get_access_token(){
     return $content;
 }
 
+第三步：通过access_token调用接口，获取用户基本数据资源或帮助用户实现基本操作。
 //通过授权获取用户信息, $content 是数组类型
 
 function get_userinfo_by_auth($content){
@@ -137,6 +141,7 @@ function get_userinfo_by_auth($content){
      return $user;
 }
 
+第四步：控制器中调用
 //微信授权登录 LoginController
 
 	public function auth(){
