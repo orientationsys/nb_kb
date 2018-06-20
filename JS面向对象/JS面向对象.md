@@ -1,6 +1,6 @@
 # JS的面向对象
 
-_js是不存在对象的!_
+_js是不存在类的!_
 
 摘自You don't know js: 
 
