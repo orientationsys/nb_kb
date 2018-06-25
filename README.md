@@ -23,3 +23,16 @@ sticky：(这是css3新增的属性值)粘性定位，其实，它就相当于re
 ## 盒子模型
 
 ![](https://mmbiz.qpic.cn/mmbiz_jpg/zPh0erYjkib3Lx1WeVMsSMiabsvKteCWGXsYZZt33pr4hGJmmTpTYictRYOpNWvoDXrcnBJPkyHtscMdAKbDAnupQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1)
+
+这是标准盒子模型，可以看到width的长度等于content的宽度；而当将box-sizing的属性值设置成border-box时，盒子模型的width=border+padding+content的总和。
+
+## 尺寸
+
+除了px，我们可以来介绍一下下面几个单位：
+
+百分比：百分比的参照物是父元素，50%相当于父元素width的50%
+
+rem：这个对于复杂的设计图相当有用，它是html的font-size的大小
+
+em：它虽然也是一个相对的单位，相对于父元素的font-size，但是，并不常用，主要是计算太麻烦了。
+
