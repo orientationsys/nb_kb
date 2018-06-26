@@ -34,6 +34,29 @@ sticky：(这是css3新增的属性值)粘性定位，其实，它就相当于re
 
 rem：这个对于复杂的设计图相当有用，它是html的font-size的大小
 
+1）先拿设计稿竖着的横向分辨率除以100得到body元素的宽度：
+如果设计稿基于iphone6，横向分辨率为750，body的width为750 / 100 = 7.5rem
+如果设计稿基于iphone4/5，横向分辨率为640，body的width为640 / 100 = 6.4rem
+
+2）布局时，设计图标注的尺寸除以100得到css中的尺寸，比如：
+高度为210px，写样式的时候css应该这么写：height: 2.1rem。之所以取一个100作为参照，就是为了这里计算rem的方便！
+
+3）在dom ready以后，通过以下代码设置html的font-size:
+document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
+
+4）font-size可能需要额外的媒介查询，并且font-size不能使用rem，如：
+```
+@media screen and (max-width:321px){
+    .m-navlist{font-size:15px}
+}
+@media screen and (min-width:321px) and (max-width:400px){
+    .m-navlist{font-size:16px}
+}
+@media screen and (min-width:400px){
+    .m-navlist{font-size:18px}
+}
+```
+
 em：它虽然也是一个相对的单位，相对于父元素的font-size，但是，并不常用，主要是计算太麻烦了。
 
 ## 两栏布局
