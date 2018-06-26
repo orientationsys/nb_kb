@@ -70,11 +70,66 @@ em：它虽然也是一个相对的单位，相对于父元素的font-size，但
 
 .right{
 
-  margin-left: 200px;
+  margin-left: 210px;
 
   height: 600px;
 
   background: yellow;
+
+}
+```
+## 三栏布局
+
+![](https://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib3Lx1WeVMsSMiabsvKteCWGXuUbrI4g0Ia0f5FBTbEYkBwmBWWST2icX2Tk6xx0icx3QryMmT4mSq89A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1)
+
+```
+<div class="left">左栏</div>
+
+<div class="middle">中间栏</div>
+
+<div class="right">右栏</div>
+
+
+
+.left{
+
+    background: yellow;
+
+    width: 200px;
+
+    height: 300px;
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+}
+
+.middle{
+
+    height: 300px;
+
+    margin: 0 220px;
+
+    background: red;
+
+}
+
+.right{
+
+    height: 300px;
+
+    width: 200px;
+
+    position: absolute;
+
+    top: 0;
+
+    right: 0;
+
+    background: green;
 
 }
 ```
