@@ -36,3 +36,45 @@ rem：这个对于复杂的设计图相当有用，它是html的font-size的大�
 
 em：它虽然也是一个相对的单位，相对于父元素的font-size，但是，并不常用，主要是计算太麻烦了。
 
+## 两栏布局
+
+![](https://mmbiz.qpic.cn/mmbiz_jpg/zPh0erYjkib3Lx1WeVMsSMiabsvKteCWGXic0jUQusvpJqr2g8uTRpIKHSnuc5oXJvU05icxuib1URlKQ6vpvzRUzdA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1)
+
+```
+<body>
+
+  <div class="left">定宽</div>
+
+  <div class="right">自适应</div>
+
+</body>
+
+
+
+.left{
+
+  width: 200px;
+
+  height: 600px;
+
+  background: red;
+
+  float: left;
+
+  display: table;
+
+
+}
+
+ 
+
+.right{
+
+  margin-left: 200px;
+
+  height: 600px;
+
+  background: yellow;
+
+}
+```
