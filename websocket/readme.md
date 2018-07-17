@@ -11,10 +11,15 @@
 WebSocket是html5规范中的一个部分，它借鉴了socket这种思想，为web应用程序客户端和服务端之间（注意是客户端服务端）提供了一种全双工通信机制。同时，它又是一种新的应用层协议，websocket协议是为了提供web应用程序和服务端全双工通信而专门制定的一种应用层协议，通常它表示为：ws://echo.websocket.org/?encoding=text HTTP/1.1，可以看到除了前面的协议名和http不同之外，它的表示地址就是传统的url地址。
 
 ### WebSocket的通信原理和机制
-既然是基于浏览器端的web技术，那么它的通信肯定少不了http,websocket本身虽然也是一种新的应用层协议，但是它也不能够脱离http而单独存在。具体来讲，我们在客户端构建一个websocket实例，并且为它绑定一个需要连接到的服务器地址，当客户端连接服务端的时候，会向服务端发送一个类似下面的http报文：
-可以看到，这是一个http get请求报文，注意该报文中有一个upgrade首部，它的作用是告诉服务端需要将通信协议切换到websocket,如果服务端支持websocket协议，那么它就会将自己的通信协议切换到websocket,同时发给客户端类似于以下的一个响应报文头：
+既然是基于浏览器端的web技术，那么它的通信肯定少不了http,websocket本身虽然也是一种新的应用层协议，但是它也不能够脱离http而单独存在。具体来讲，我们在客户端构建一个websocket实例，并且为它绑定一个需要连接到的服务器地址，当客户端连接服务端的时候，会向服务端发送一个http报文。
+
+可以看到，这是一个http get请求报文，注意该报文中有一个upgrade首部，它的作用是告诉服务端需要将通信协议切换到websocket,如果服务端支持websocket协议，那么它就会将自己的通信协议切换到websocket,同时发给客户端一个响应报文头。
+
 返回的状态码为101，表示同意客户端协议转换请求，并将它转换为websocket协议。以上过程都是利用http通信完成的，称之为websocket协议握手(websocket Protocol handshake)，进过这握手之后，客户端和服务端就建立了websocket连接，以后的通信走的都是websocket协议了。所以总结为websocket握手需要借助于http协议，建立连接后通信过程使用websocket协议。同时需要了解的是，该websocket连接还是基于我们刚才发起http连接的那个TCP连接。一旦建立连接之后，我们就可以进行数据传输了，websocket提供两种数据传输：文本数据和二进制数据。
 
 ```
 ws = new WebSocket("ws://35.177.63.126:8282");
 ```
+
+### 参考资料
+<a href="http://www.52im.net/thread-331-1-1.html">http://www.52im.net/thread-331-1-1.html</a>
