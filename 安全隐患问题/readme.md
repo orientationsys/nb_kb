@@ -30,7 +30,9 @@ HTTP明文协议的缺陷，是导致数据泄露、数据篡改、流量劫持�
 
 # PHP相关的安全问题
 一. SQL注进式攻击
+
 1 sql注入
+
 2 用户输进的类型（表单的文本框输入限制）
 
 二. 设置网站文件所有者防止php网站被挂木马
@@ -40,3 +42,4 @@ HTTP明文协议的缺陷，是导致数据泄露、数据篡改、流量劫持�
 1. 　ftp 连接信息被破解
 2. 　网站服务器软件，程序存在漏洞被利用。
 相关链接[https://www.jianshu.com/p/ed6491169b24](https://www.php1.cn/detail/ZhengQueSheZhiWangZhanWenJianSuoYouZheFangZhi_php_WangZhanBeiGuaMuMa.html)
+![](http://s6.51cto.com/wyfs01/M00/0E/C8/wKioOVGurbWhNbwBAAEVuJZgWOM720.jpg)
