@@ -42,4 +42,24 @@ HTTP明文协议的缺陷，是导致数据泄露、数据篡改、流量劫持�
 1. 　ftp 连接信息被破解
 2. 　网站服务器软件，程序存在漏洞被利用。
 相关链接[https://www.jianshu.com/p/ed6491169b24](https://www.php1.cn/detail/ZhengQueSheZhiWangZhanWenJianSuoYouZheFangZhi_php_WangZhanBeiGuaMuMa.html)
+
+文件及进程权限
+php-fpm/apache/nginx 等进程对网站文件至少需要有读取权限
+![](http://s7.51cto.com/wyfs01/M00/0E/C6/wKioJlGurbSAbfp8AACTy1jz-uE204.jpg)
+
 ![](http://s6.51cto.com/wyfs01/M00/0E/C8/wKioOVGurbWhNbwBAAEVuJZgWOM720.jpg)
+
+◆ nginx和 php 对网站只有读取权限，无写入权限
+
+
+◆ 如果php 程序需要对网站某些文件有写入权限，需要手工将文件或目录权限修改为 777
+
+
+可以想象的是，万一 php 
+程序中有漏洞，攻击者上传木马，便可以修改网站的所有文件，网站首页被黑，也就不足为怪了。
+
+
+退一步，如果我们设置了较严格的权限，就算php 程序中存在漏洞，那么攻击者也只能篡改权限为 777 
+的目录，其它的文件是无法被改写的，网站不就就得更安全了吗？
+
+核心总结：php-fpm/apache/nginx进程所使用的用户，不能是网站文件所有者。 凡是违背这个原则，则不符合最小权限原则。
