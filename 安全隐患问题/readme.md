@@ -44,7 +44,7 @@ HTTP明文协议的缺陷，是导致数据泄露、数据篡改、流量劫持�
 相关链接[https://www.jianshu.com/p/ed6491169b24](https://www.php1.cn/detail/ZhengQueSheZhiWangZhanWenJianSuoYouZheFangZhi_php_WangZhanBeiGuaMuMa.html)
 
 文件及进程权限
-php-fpm/apache/nginx 等进程对网站文件至少需要有读取权限
+php-fpm/apache/nginx 等进程对网站文件至少需要有读取权限	
 ![](http://s7.51cto.com/wyfs01/M00/0E/C6/wKioJlGurbSAbfp8AACTy1jz-uE204.jpg)
 
 ![](http://s6.51cto.com/wyfs01/M00/0E/C8/wKioOVGurbWhNbwBAAEVuJZgWOM720.jpg)
@@ -63,3 +63,26 @@ php-fpm/apache/nginx 等进程对网站文件至少需要有读取权限
 的目录，其它的文件是无法被改写的，网站不就就得更安全了吗？
 
 核心总结：php-fpm/apache/nginx进程所使用的用户，不能是网站文件所有者。 凡是违背这个原则，则不符合最小权限原则。
+
+# 如何防范SQL注入、CSRF、XSS攻击？
+
+1、使用PDO预处理的方式，也就是一个萝卜一个坑。
+预处理。将输入的数值，绑定到参数，也就是放进坑里（一个萝卜一个坑，一个参数一个坑），这样输入的内容（外部的内容）就都落到坑里了，在每个坑里处理每个参数，这样就安全了，不会出现SQL注入。
+
+
+2、使用htmlspecialchars()等函数进行转义。还可以对输入类型进行检测，类型转换。
+
+
+二：如何防范CSRF攻击
+
+
+使用token进行验证。可以在 HTTP 请求中以参数的形式加入一个随机产生的 token，并在服务器端建立一个拦截器来验证这个 token，如果请求中没有 token 或者 token 内容不正确，则认为可能是 CSRF 攻击而拒绝该请求。（使用GET或POST方法加TOKEN）
+
+laravel（csrf_token）
+
+
+三 如何防范XSS攻击
+1、案例：听以前在阿里的同事分享：之前淘宝有一个意见反馈功能，有一天后台人员查看用户提交的意见，打开的某一条意见的瞬间，自动跳转到了另一个网站。但当时幸亏是阿里内网，对外网做了限制，没有造成危害。可见，XSS不可小觑。
+
+
+2、防范：最简单的办法，过滤输入。对用户的输入，可以使用htmlspecialchars()等函数进行过滤转义，当然，一些文件上传等，也可能会造成此攻击，要限制上传文件的类型，比如只能传图片等。
