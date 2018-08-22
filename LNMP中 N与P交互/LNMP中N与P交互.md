@@ -11,21 +11,32 @@
 
     1.什么是CGI？
 
-            CGI是一种通用网关协议。为了解决不同的语言解释器(如php、python解释器)与WebServer的通信而产生的一种协议。只要遵守这种协议就能实现语言与WebServer通讯。CGI是规定了要传什么数据／以什么格式传输给php解析器的协议。
+            CGI是一种通用网关协议。为了解决不同的语言解释器(如php、python解释器)与WebServer的通信而产生的一种协议。
+            只要遵守这种协议就能实现语言与WebServer通讯。CGI是规定了要传什么数据／以什么格式传输给php解析器的协议。
             问题：
-            有了cgi协议，解决了php解释器与webserver通信的问题，webserver终于可以处理动态语言了。但是，webserver每收到一个请求，都会去fork一个cgi进程，请求结束再kill掉这个进程。这样有10000个请求，就需要fork、kill php-cgi进程10000次。资源浪费。
+            有了cgi协议，解决了php解释器与webserver通信的问题，webserver终于可以处理动态语言了。
+            但是，webserver每收到一个请求，都会去fork一个cgi进程，请求结束再kill掉这个进程。这样有10000个请求，
+            就需要fork、kill php-cgi进程10000次。资源浪费。
 
     2.什么是FastCGI?
 
-        是一种对CGI协议升华的一种协议。FastCGI像是一个常驻(long-live)型的CGI，它可以一直执行着，只要激活后，不会每次都要花费时间去fork一次(这是CGI最为人诟病的fork-and-execute 模式)。它还支持分布式的运算, 即 FastCGI 程序可以在网站服务器以外的主机上执行并且接受来自其它网站服务器来的请求。
+        是一种对CGI协议升华的一种协议。FastCGI像是一个常驻(long-live)型的CGI，它可以一直执行着，只要激活后，
+        不会每次都要花费时间去fork一次(这是CGI最为人诟病的fork-and-execute 模式)。它还支持分布式的运算, 
+        即 FastCGI 程序可以在网站服务器以外的主机上执行并且接受来自其它网站服务器来的请求。
 
     3.什么是PHP-FPM?
 
-        (PHP FastCGI Process Manager)，PHP-FPM是一个实现了Fastcgi协议的程序,用来管理Fastcgi起的进程的,即能够调度php-cgi进程的程序。并提供了进程管理的功能。进程包含 master 进程和 worker 进程两种进程。master进程只有一个，负责监听端口(默认9000)，接收来自 WebServer的请求，而 worker 进程则一般有多个(具体数量根据实际需要配置)，每个进程内部都嵌入了一个 PHP 解释器，是PHP代码真正执行的地方。
+        (PHP FastCGI Process Manager)，PHP-FPM是一个实现了Fastcgi协议的程序,用来管理Fastcgi起的进程的,
+        即能够调度php-cgi进程的程序。并提供了进程管理的功能。进程包含 master 进程和 worker 进程两种进程。
+        master进程只有一个，负责监听端口(默认9000)，接收来自 WebServer的请求，而 worker 进程则一般有多个
+        (具体数量根据实际需要配置)，每个进程内部都嵌入了一个 PHP 解释器，是PHP代码真正执行的地方。
 
     4.FastCGI好在哪里？
 
-        Fastcgi则会先fork一个master，解析配置文件，初始化执行环境，然后再fork多个worker。当请求过来时，master会传递给一个worker，然后立即可以接受下一个请求。这样就避免了重复的劳动，效率自然是高。而且当worker不够用时，master可以根据配置预先启动几个worker等着；当然空闲worker太多时，也会停掉一些，这样就提高了性能，也节约了资源。这就是Fastcgi的对进程的管理。大多数Fastcgi实现都会维护一个进程池。
+        Fastcgi则会先fork一个master，解析配置文件，初始化执行环境，然后再fork多个worker。当请求过来时，
+        master会传递给一个worker，然后立即可以接受下一个请求。这样就避免了重复的劳动，效率自然是高。
+        而且当worker不够用时，master可以根据配置预先启动几个worker等着；当然空闲worker太多时，
+        也会停掉一些，这样就提高了性能，也节约了资源。这就是Fastcgi的对进程的管理。大多数Fastcgi实现都会维护一个进程池。
 
 三、nginx 与php的交互过程
   我们以用户访问index.php为例，服务器环境为LNMP:
