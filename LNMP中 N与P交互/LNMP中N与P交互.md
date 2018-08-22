@@ -118,7 +118,10 @@ nginx与php-fpm的结合，完整的流程是这样的。
             include        fastcgi_params;
         }
     }
-    
+
+
+<img src="2.jpg">
+
 五、参考文章   
     <a href="https://laravel-china.org/articles/13772/with-so-many-lnmp-do-you-really-understand-the-interaction-between-n-and-p">用了那么多 LNMP, 你真的了解 N 与 P 交互吗？</a><br>
     <a href="https://www.imooc.com/article/19278">你确定你真的懂Nginx与PHP的交互？</a><br>
