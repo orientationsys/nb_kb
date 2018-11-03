@@ -28,4 +28,21 @@
 
 要捕获数据，你需要使用 AnalyserNode.getFloatFrequencyData() 或 AnalyserNode.getByteFrequencyData() 方法来获取频率数据，用 AnalyserNode.getByteTimeDomainData() 或 AnalyserNode.getFloatTimeDomainData() 来获取波形数据。
 
+这些方法把数据复制进了一个特定的数组当中，所以你在调用它们之前要先创建一个新数组。第一个方法会产生一个32位浮点数组，第二个和第三个方法会产生8位无符号整型数组，因此一个标准的JavaScript数组就不能使用 —— 你需要用一个 Float32Array 或者 Uint8Array 数组，具体需要哪个视情况而定。
+
+那么让我们来看看例子，比如我们正在处理一个2048尺寸的FFT。我们返回 AnalyserNode.frequencyBinCount 值，它是FFT的一半，然后调用Uint8Array()，把frequencyBinCount作为它的长度参数 —— 这代表我们将对这个尺寸的FFT收集多少数据点。
+
+```
+analyser.fftSize = 2048;
+var bufferLength = analyser.frequencyBinCount;
+var dataArray = new Uint8Array(bufferLength);
+```
+
+要正确检索数据并把它复制到我们的数组里，就要调用我们想要的数据收集方法，把数组作为参数传递给它，例如：
+
+```
+analyser.getByteTimeDomainData(dataArray);
+```
+
+现在我们就获取了那时的音频数据，并存到了我们的数组里，而且可以把它做成我们喜欢的可视化效果了，比如把它画在一个HTML5 <canvas> 画布上。
 
